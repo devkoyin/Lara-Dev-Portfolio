@@ -77,7 +77,10 @@ nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-i
 .hero-badge { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(201,106,58,.26); background:rgba(201,106,58,.06); color:var(--terra3); font-size:11px; font-weight:500; padding:6px 16px; border-radius:999px; letter-spacing:.08em; margin-bottom:36px; width:fit-content; animation:fadeUp .8s .3s ease both; }
 .badge-dot { width:6px; height:6px; border-radius:50%; background:var(--terra3); animation:blink 2s infinite; }
 
-.hero-name { font-family:var(--display); font-size:clamp(52px,7.5vw,104px); font-weight:800; line-height:.92; letter-spacing:-.04em; color:var(--nude); animation:fadeUp .9s .4s ease both; }
+.hero-name { font-family:var(--display); font-size:clamp(64px,10vw,148px); font-weight:800; line-height:.88; letter-spacing:-.04em; color:var(--nude); animation:fadeUp .9s .4s ease both; }
+.hero-rule { width:100%; height:1px; background:var(--border2); margin:44px 0; animation:fadeUp .9s .55s ease both; }
+.hero-bottom { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; animation:fadeUp .9s .6s ease both; }
+.hero-cta-col { display:flex; flex-direction:column; align-items:flex-end; gap:20px; }
 
 /* gradient: soft terra → warm nude — not harsh */
 .hero-name-grad { display:block; background:linear-gradient(130deg, var(--terra2) 0%, var(--nude2) 60%, var(--nude3) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -86,10 +89,10 @@ nav { position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-i
 .hero-role, .hero-loc { font-size:14px; color:var(--muted); font-weight:300; letter-spacing:.01em; }
 .hero-sep { width:1px; height:18px; background:var(--dim); }
 
-.hero-desc { font-size:17px; color:rgba(234,217,200,.48); line-height:1.9; max-width:500px; font-weight:300; margin-bottom:44px; animation:fadeUp .9s .6s ease both; }
+.hero-desc { font-size:16px; color:rgba(234,217,200,.48); line-height:1.9; max-width:480px; font-weight:300; margin-bottom:0; }
 .hero-desc strong { color:var(--nude); font-weight:500; }
 
-.cta-row { display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp .9s .7s ease both; }
+.cta-row { display:flex; gap:14px; flex-wrap:wrap; }
 .btn-p { font-family:var(--display); font-size:13px; font-weight:700; background:var(--terra); color:#FFF0E8; padding:15px 32px; border:none; cursor:none; border-radius:8px; letter-spacing:.02em; text-decoration:none; display:inline-block; position:relative; overflow:hidden; transition:transform .2s,background .25s; }
 .btn-p::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.1),transparent); opacity:0; transition:opacity .2s; }
 .btn-p:hover { transform:translateY(-2px); background:var(--terra2); }
@@ -203,6 +206,8 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:28px 
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
+  .hero-bottom { grid-template-columns:1fr; gap:32px; }
+  .hero-cta-col { align-items:flex-start; }
   .about-grid,.skills-grid,.cg { grid-template-columns:1fr; gap:48px; }
   .proj-item { grid-template-columns:1fr; gap:12px; }
   .pnum { display:none; }
@@ -236,15 +241,22 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:28px 
   <div class="glow3"></div>
   <div class="hero-badge"><span class="badge-dot"></span>Open to new opportunities</div>
   <h1 class="hero-name">Omolara<br><span class="hero-name-grad">Aworeni</span></h1>
-  <div class="hero-meta">
-    <span class="hero-role">Frontend Developer</span>
-    <span class="hero-sep"></span>
-    <span class="hero-loc">Lagos, Nigeria</span>
-  </div>
-  <p class="hero-desc">I craft <strong>interfaces that move people</strong> — not just move pixels. Angular · React · TypeScript. Detail-obsessed. Human-first.</p>
-  <div class="cta-row">
-    <a href="#projects" class="btn-p">View my work</a>
-    <a href="#contact" class="btn-s">Get in touch</a>
+  <div class="hero-rule"></div>
+  <div class="hero-bottom">
+    <div>
+      <div class="hero-meta">
+        <span class="hero-role">Frontend Developer</span>
+        <span class="hero-sep"></span>
+        <span class="hero-loc">Lagos, Nigeria</span>
+      </div>
+      <p class="hero-desc">I craft <strong>interfaces that move people</strong> — not just move pixels. Angular · React · TypeScript. Detail-obsessed. Human-first.</p>
+    </div>
+    <div class="hero-cta-col">
+      <div class="cta-row">
+        <a href="#projects" class="btn-p">View my work</a>
+        <a href="#contact" class="btn-s">Get in touch</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -351,9 +363,9 @@ const SKILLS=[
 ];
 let projects=[
   {title:'Livna Fashion Brand App', desc:'Multi-user Angular dashboard for patients, NGOs, HMOs, and clinical researchers with role-based views.',url:'https://livna-design.vercel.app/',tags:['Angular','TypeScript','RxJS','SCSS']},
-  {title:'Financial Budget App',    desc:'Accessible, reusable Angular component system for rapid, consistent interface development at scale.',  url:'https://finovo-three.vercel.app/',tags:['Angular','Storybook','TypeScript']},
-  {title:'CRM Platform',            desc:'Click the button below to add your real work with a live URL, description, and tech stack.',           url:'https://meridian-crm-bay.vercel.app/',tags:['Add yours']},
-  {title:'Healthy Town',            desc:'A health-focused web application built for community wellness and access to healthcare information.',    url:'https://healthy-town-96io.vercel.app/',tags:['React','TypeScript']},
+  {title:'Financial Budget App',    desc:'Accessible, reusable Angular component system for rapid, consistent interface development at scale.',  url:'https://finovo-three.vercel.app/',tags:['Angular','TypeScript','RxJS','SCSS']},
+  {title:'CRM Platform',            desc:'Click the button below to add your real work with a live URL, description, and tech stack.',           url:'https://meridian-crm-bay.vercel.app/',tags:['Angular','TypeScript','RxJS','SCSS']},
+  {title:'Healthy Town',            desc:'A health-focused web application built for community wellness and access to healthcare information.',    url:'https://healthy-town-96io.vercel.app/',tags:['Angular','TypeScript','RxJS','SCSS']},
 ];
 
 function render(){
