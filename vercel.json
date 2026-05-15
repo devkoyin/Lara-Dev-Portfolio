@@ -1,3 +1,5 @@
 {
-  "root": "DEV-PORTFOLIO"
+  "outputDirectory": "DEV-PORTFOLIO",
+  "buildCommand": null,
+  "framework": null
 }
